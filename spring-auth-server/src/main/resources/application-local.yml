@@ -1,0 +1,9 @@
+# Database Connection
+spring.datasource:
+  url: jdbc:postgresql://localhost:5433/spring_auth_server_db?prepareThreshold=0 # Disable prepared stmts: https://stackoverflow.com/questions/7611926/postgres-error-prepared-statement-s-1-already-exists
+  username: postgres
+  password: admin
+
+# Flyway Migration
+spring.flyway:
+  enabled: true
