@@ -6,7 +6,10 @@ import org.hibernate.annotations.NaturalId;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 
+import java.time.Duration;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -99,6 +102,15 @@ public class Client {
             .redirectUri(client.getRedirectUri())
             .clientAuthenticationMethod(new ClientAuthenticationMethod(client.getAuthMethod()))
             .authorizationGrantType(new AuthorizationGrantType(client.getGrantType()))
+            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+            //.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE) // TODO: Required or can be set through database, if auth code grant type is required
+            .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS) // TODO: Required or can be set through database, if client credentials grant type is required
+            .tokenSettings(TokenSettings.builder()
+                // TODO: change to OAuth2TokenFormat.REFERENCE to generate Opaque token
+                // TODO: change to OAuth2TokenFormat.SELF_CONTAINED to generate JWT token
+                .accessTokenFormat(OAuth2TokenFormat.SELF_CONTAINED)
+                .accessTokenTimeToLive(Duration.ofMinutes(10))
+                .build())
             .build();
     }
 }

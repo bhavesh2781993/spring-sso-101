@@ -1,0 +1,11 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: spring-resource-server-client
+
+auth.server:
+  endpoint: http://localhost:8080/oauth2
+  jwks:
+    uri: ${auth.server.endpoint}/jwks
