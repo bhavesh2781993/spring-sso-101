@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "95337884-738d-4d19-b3f4-5e0104e1e2d7",
+		"name": "Spring SSO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1374354"
+	},
+	"item": [
+		{
+			"name": "Auth Server",
+			"item": [
+				{
+					"name": "Well Known",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/.well-known/openid-configuration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								".well-known",
+								"openid-configuration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JWKS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/oauth2/jwks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth2",
+								"jwks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri=https://springone.io/authorized&code_challenge=NmodjaJAbTqVbLL5SDNP_PT19Pw769ZcMHXaGscd_TY&code_challenge_method=S256",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth2",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "client"
+								},
+								{
+									"key": "scope",
+									"value": "openid"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://springone.io/authorized"
+								},
+								{
+									"key": "code_challenge",
+									"value": "NmodjaJAbTqVbLL5SDNP_PT19Pw769ZcMHXaGscd_TY"
+								},
+								{
+									"key": "code_challenge_method",
+									"value": "S256"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "client",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "client",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://springone.io/authorized",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "i_9BqSkj-HK7Kb88_M2kynyW3xqpKEWWxFqM3ZIVAdg_CUVX2z9J-ufN1-BpdcjP3Pyfs49wjtqbhS927JX02W2O902ViFhRpYoGu6Xb0fUXwtScskehEQVGVSbgUx48",
+									"type": "text"
+								},
+								{
+									"key": "code_verifier",
+									"value": "oGyuGElYafpx5274awLcpymJYKuYcKkEE6dG3Uiq_K0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/oauth2/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "grant_type",
+						"value": "client_credentials",
+						"type": "string"
+					},
+					{
+						"key": "clientSecret",
+						"value": "secret",
+						"type": "string"
+					},
+					{
+						"key": "redirect_uri",
+						"value": "https://springone.io/authorized",
+						"type": "string"
+					},
+					{
+						"key": "useBrowser",
+						"value": false,
+						"type": "boolean"
+					},
+					{
+						"key": "authUrl",
+						"value": "http://localhost:8080/oauth2/authorize",
+						"type": "string"
+					},
+					{
+						"key": "scope",
+						"value": "openid",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "client",
+						"type": "string"
+					},
+					{
+						"key": "accessTokenUrl",
+						"value": "http://localhost:8080/oauth2/token",
+						"type": "string"
+					},
+					{
+						"key": "tokenName",
+						"value": "Spring Auth Server Token",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Resource Server",
+			"item": [
+				{
+					"name": "API call with Opaque",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "b3GEkvLD8rqlA78qaB6zd73fz0B56k9KsB486uwRbWctjhopX7Aj3jbZNfSNYDwPeNvULBxtPiSP9xU0KhT03ja4YeuQewjlAYho673ijPz-EkeWnj8MNjd99H95t8pm",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/demo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"demo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with JWT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiIxZDRlNTBmYy1jY2M1LTRhN2ItYWEwMC0yYmExODc5YWE3ZmQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiaWxsIiwiYXVkIjoiY2xpZW50IiwibmJmIjoxNzMxODE1ODUwLCJ0ZXN0IjoidGVzdCIsInNjb3BlIjpbIm9wZW5pZCJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAiLCJleHAiOjE3MzE4MTY0NTAsImlhdCI6MTczMTgxNTg1MCwianRpIjoiYzczMzRlMGItZGQ5Mi00MDhmLTkzZmUtMDQ1YTM1MDFmYTUwIiwiYXV0aG9yaXRpZXMiOlsicmVhZCJdfQ.cg8S8n2IuZU6DPVkW12NdB_kwqpwRrct59GLDWQluHdDAZhl2wHKyLRSM6oCP0AKfPwgSEnUsKzwcGSeNhL5wGh2hc_Z0xdGjxbQZlyZQhdtM4gB4lJU7tSbD8T5ocD6VZ29WNANUvr8Ym-9V9yWzIuqYt91AZUstajwmCIFr2a6j_qScYvZOyVtnUVrv0sx3iO3QNg83kivgqkp0jDwPc0s3nwusd0i3IIoXfLO9rtg5dlynJxHW5xNLWYVb6MIxkrFJWxsfFlXtkCSCmH5-2g7RzbHG7AF_8ADDUO-yOcnMzY41BulV3GOzVPfktQPCtKGJdqHqzKSwar9V5rmLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/demo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"demo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with Client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiIyZWNlZDk1ZC0zZmM4LTQyYmQtOWVkOC0yNTI2NGRlZjg1NGQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjbGllbnQiLCJhdWQiOiJjbGllbnQiLCJuYmYiOjE3MzE4MTc4MjUsInRlc3QiOiJ0ZXN0Iiwic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCIsImV4cCI6MTczMTgxODQyNSwiaWF0IjoxNzMxODE3ODI1LCJqdGkiOiJlZTc0MzkzMS1iM2M0LTRlYmQtYjYxMy1lYjYyNGE5NDhkMDgiLCJhdXRob3JpdGllcyI6W119.fgJaWtlSDzhhGJNWTq742p5gVbcWE2Lgy-ROww47Zdt3Z0c9Xol1x1iPYhngU-cV1YRD9fbXyKaTRTgg1DuCOzwGtrfBamCadSwZJVhSME-9Cerq8AytlpfjfxA8t0Dn0rWt4NGu8fqOVW-Pww6-q8EffnT0ZGQ_QnGPDXvYMHeGgH0RvV2AczuXsfoIFN7ubap_P-wfBHkwMAweQhCqC1FCzZqSJEqAzAXB_f8IifAd5UIgZBzuLJ95RbJYuU4S-8EdxwkKj-0OwYBXbqHxnY9sSyoeV9gfRb5TlQfOUEysO1eO_o6e59ilUqnKI7YYiMF7PnOkISS4THyzWM6JHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/demo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"demo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Introspect Opaque Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "client",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "b3GEkvLD8rqlA78qaB6zd73fz0B56k9KsB486uwRbWctjhopX7Aj3jbZNfSNYDwPeNvULBxtPiSP9xU0KhT03ja4YeuQewjlAYho673ijPz-EkeWnj8MNjd99H95t8pm",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/oauth2/introspect",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth2",
+								"introspect"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client Server",
+			"item": [
+				{
+					"name": "Client Server",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/demo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"demo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
