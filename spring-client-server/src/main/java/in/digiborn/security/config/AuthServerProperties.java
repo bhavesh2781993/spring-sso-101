@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "resource.server")
-public class ResourceServerProperties {
+@ConfigurationProperties(prefix = "auth.server")
+public class AuthServerProperties {
 
     private String clientId;
     private String clientSecret;

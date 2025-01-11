@@ -22,7 +22,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final ResourceServerProperties resourceServerProperties;
+    private final AuthServerProperties authServerProperties;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -64,11 +64,11 @@ public class SecurityConfig {
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         ClientRegistration client1 = ClientRegistration.withRegistrationId("1")
-            .clientId(resourceServerProperties.getClientId())
-            .clientSecret(resourceServerProperties.getClientSecret())
+            .clientId(authServerProperties.getClientId())
+            .clientSecret(authServerProperties.getClientSecret())
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
             .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-            .tokenUri(resourceServerProperties.getTokenUri())
+            .tokenUri(authServerProperties.getTokenUri())
             .scope(OidcScopes.OPENID)
             .build();
 
