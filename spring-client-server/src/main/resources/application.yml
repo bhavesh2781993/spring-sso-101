@@ -3,7 +3,10 @@ server:
 
 spring.application.name: spring-client-server
 
+auth.server:
+  clientId: ${AS_CLIENT_ID}
+  clientSecret: ${AS_CLIENT_SECRET}
+  tokenUri: ${AS_TOKEN_URI}
+
 resource.server:
-  clientId: ${RS_CLIENT_ID}
-  clientSecret: ${RS_CLIENT_SECRET}
-  tokenUri: ${RS_TOKEN_URI}
+  baseUrl: ${RS_BASE_URL}
