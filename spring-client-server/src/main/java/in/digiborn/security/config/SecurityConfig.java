@@ -1,5 +1,6 @@
 package in.digiborn.security.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -18,7 +19,10 @@ import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final ResourceServerProperties resourceServerProperties;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -60,11 +64,11 @@ public class SecurityConfig {
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         ClientRegistration client1 = ClientRegistration.withRegistrationId("1")
-            .clientId("client")
-            .clientSecret("secret")
+            .clientId(resourceServerProperties.getClientId())
+            .clientSecret(resourceServerProperties.getClientSecret())
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
             .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-            .tokenUri("http://localhost:8080/oauth2/token")
+            .tokenUri(resourceServerProperties.getTokenUri())
             .scope(OidcScopes.OPENID)
             .build();
 

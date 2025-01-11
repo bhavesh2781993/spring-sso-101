@@ -1,3 +1,9 @@
-spring.application.name: spring-client-server
 server:
   port: 9091
+
+spring.application.name: spring-client-server
+
+resource.server:
+  clientId: ${RS_CLIENT_ID}
+  clientSecret: ${RS_CLIENT_SECRET}
+  tokenUri: ${RS_TOKEN_URI}

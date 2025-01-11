@@ -1,0 +1,4 @@
+resource.server:
+  clientId: client
+  clientSecret: secret
+  tokenUri: "http://localhost:8080/oauth2/token"
