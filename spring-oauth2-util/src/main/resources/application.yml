@@ -1,0 +1,4 @@
+spring.application.name: spring-oauth2-util
+
+server:
+  port: 9100

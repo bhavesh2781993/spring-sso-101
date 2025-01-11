@@ -39,6 +39,7 @@
         <module>spring-resource-server-client</module>
         <module>spring-resource-server-jwt</module>
         <module>spring-resource-server-opaque</module>
+        <module>spring-oauth2-util</module>
     </modules>
 
 </project>
