@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>in.digiborn.security</groupId>
+    <artifactId>spring-sso-101</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-sso-101</name>
+    <description>spring-sso-101</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Bhavesh Shah</name>
+            <email>info@digiborn.in</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>21</java.version>
+        <ds-proxy-spring-boot-starter.version>1.9.0</ds-proxy-spring-boot-starter.version>
+    </properties>
+    <packaging>pom</packaging>
+    <modules>
+        <module>spring-auth-server</module>
+        <module>spring-client-server</module>
+        <module>spring-resource-server-client</module>
+        <module>spring-resource-server-jwt</module>
+        <module>spring-resource-server-opaque</module>
+    </modules>
+
+</project>

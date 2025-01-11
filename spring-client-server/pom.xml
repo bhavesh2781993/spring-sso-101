@@ -11,8 +11,8 @@
     <groupId>in.digiborn.security</groupId>
     <artifactId>spring-client-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-resource-server-client-1</name>
-    <description>spring-resource-server-client-1</description>
+    <name>spring-client-server</name>
+    <description>spring-client-server</description>
     <url/>
     <licenses>
         <license/>
